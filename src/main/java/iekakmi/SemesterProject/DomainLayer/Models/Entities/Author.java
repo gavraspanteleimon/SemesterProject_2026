@@ -28,10 +28,8 @@ public class Author {
     @Column(name = "dateofbirth")
     public int dateofbirth;
 
-    // ❌ Διέγραψε το: public String books;
-    // Δεν χρειάζεται — η σχέση γίνεται μέσω ManyToMany
-
-    @ManyToMany(mappedBy = "authors")  // ✅ "authors" όχι "author"
+  
+    @ManyToMany(mappedBy = "authors")  
     private List<Book> book;
 
     // constructors, getters, setters...
