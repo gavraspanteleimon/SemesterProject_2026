@@ -1,67 +1,38 @@
 package iekakmi.SemesterProject.DomainLayer.Models.Entities;
 
+import java.util.Set;
+
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
-@Entity (name = "author") 
+@Entity(name = "author")
 public class Author {
-	
-	@Id
-	@Column(name = "id")
-	public int id;
-	
-	public String name;
-	public String nationality;
-	public int dateofbirth;
-	public String books ;
-	
-	//CONSTRUCTORS
-	public Author() {}
-	
-	 Author(String name, String nationality, int dateofbirth, String books) {
-		super();
-		this.name = name;
-		this.nationality = nationality;
-		this.dateofbirth = dateofbirth;
-		this.books = books;
-	}
 
-	 // SETTERS - GETTERS
-	 public String getName() {
-		 return name;
-	 }
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
 
-	 public void setName(String name) {
-		 this.name = name;
-	 }
+    @Column(name = "name")
+    public String name;
 
-	 public String getNationality() {
-		 return nationality;
-	 }
+    @Column(name = "nationality")
+    public String nationality;
 
-	 public void setNationality(String nationality) {
-		 this.nationality = nationality;
-	 }
+    @Column(name = "dateofbirth")
+    public int dateofbirth;
 
-	 public int getDateofbirth() {
-		 return dateofbirth;
-	 }
+    // ❌ Διέγραψε το: public String books;
+    // Δεν χρειάζεται — η σχέση γίνεται μέσω ManyToMany
 
-	 public void setDateofbirth(int dateofbirth) {
-		 this.dateofbirth = dateofbirth;
-	 }
+    @ManyToMany(mappedBy = "authors")  // ✅ "authors" όχι "author"
+    private List<Book> book;
 
-	 public String getBooks() {
-		 return books;
-	 }
-
-	 public void setBooks(String books) {
-		 this.books = books;
-	 }
-	
-	
-	
-	
-	
+    // constructors, getters, setters...
 }

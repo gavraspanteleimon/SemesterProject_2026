@@ -1,22 +1,44 @@
 package iekakmi.SemesterProject.DomainLayer.Models.Entities;
 
-import javax.swing.Spring;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 
 @Entity (name = "book") 
 public class Book {
 	
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id ;
 	
+	@Column( name = "isbn")
 	public String isbn;
+	
+	@Column( name = "title")
 	public String title ;
+	
+	@Column( name = "year")
 	public int year;
+	
+	@Column( name = "author")
 	public String author;
+	
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "BookByAuthor", 
+	  joinColumns = @JoinColumn(name = "book_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private List<Author> authors;
+
 	
 	
 	//constructors

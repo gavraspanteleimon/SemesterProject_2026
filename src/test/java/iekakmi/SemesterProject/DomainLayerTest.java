@@ -15,11 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class DomainLayerTest {
 
 	
-	@Autowired
-	private BookRepository bookrepository;
+//	@Autowired
+//	private BookRepository bookrepository;
 	
 	@Autowired
 	private AuthorRepository authorrepository;
+	
+
 	
 	@Test
 	void findallauthors() {
@@ -28,6 +30,7 @@ public class DomainLayerTest {
 
 		Assertions.assertThat(author).isNotNull();
 		Assertions.assertThat(author.size()).isGreaterThan(0);
+		
 	
 }
 }
