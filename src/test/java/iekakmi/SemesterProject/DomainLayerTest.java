@@ -29,6 +29,21 @@ public class DomainLayerTest {
 		
 		List<Author> author= authorrepository.findAll();
 
+	//  Create a new Author 
+		
+	/*	Author newAuthor = new Author("J.R.R.Tolkien","English",1892);
+		authorrepository.save(newAuthor);
+	*/
+	
+	
+	//  Delete an Author
+		
+	/*	Author firstauthor = author.get(0);
+		int deletedId=firstauthor.getId();
+		authorrepository.delete(firstauthor);
+		Assertions.assertThat(authorrepository.findById(deletedId)).isEmpty();
+	*/	
+		
 		Assertions.assertThat(author).isNotNull();
 		Assertions.assertThat(author.size()).isGreaterThan(0);
 	}
@@ -36,9 +51,29 @@ public class DomainLayerTest {
 	@Test
 	void getallbooks() {
 		List<Book> book = bookrepository.findAll();
-		
+			
 		Assertions.assertThat(book).isNotNull();
 		Assertions.assertThat(book.size()).isGreaterThan(0);
+		
+	//  Create a new Book
+		
+	/*	Book newBook = new Book ("978-0-13-468599-1", "Clean Code", 2008, "Robert Martin");
+		bookrepository.save(newBook); 
+	*/	
+	
+	//	How to delete a Book
+		
+	/*	Book firstbook = book.get(1);
+		int deletedId=firstbook.getId();
+		bookrepository.delete(firstbook);	
+		Assertions.assertThat(bookrepository.findById(deletedId)).isEmpty(); 	
+	*/
+		
+	
+		
+		
+		
+		
 	
 	
 }
