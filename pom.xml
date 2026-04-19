@@ -65,6 +65,11 @@
 			<artifactId>demo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.iekakmi</groupId>
+			<artifactId>eshop_api</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
