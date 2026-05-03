@@ -56,7 +56,7 @@ public class AuthorService {
 	}
 	
 	@Transactional
-	public AuthorDto updateCity(@Valid AuthorDto c)
+	public AuthorDto updateAuthor(@Valid AuthorDto c)
 	{
 		Author entity = authorRepository.findById(c.getId())
 				.orElseThrow(()->  new RuntimeException("Author not found with id: " + c.getId()));

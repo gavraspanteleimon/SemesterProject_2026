@@ -23,7 +23,7 @@ public class BookService {
 		this.bookRepository = bookRepository ;
 	}
 	
-	public List<BookDto> getBooks()
+	public List<BookDto> getBook()
 	{
 		return bookRepository.findAll().stream()
 				.map(c -> {
