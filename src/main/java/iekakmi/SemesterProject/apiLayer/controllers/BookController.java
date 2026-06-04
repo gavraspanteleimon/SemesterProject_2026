@@ -29,33 +29,34 @@ public class BookController {
 		this.bookService = bookService ;
 	}
 	
+	
 	@GetMapping
-	public ResponseEntity<ResponseContainer<List<BookDto>>>getBook()
+	public ResponseEntity<List<BookDto>>getBook()
 	{
 		List<BookDto> response = bookService.getBook();
-		return ResponseEntity.ok(new ResponseContainer<>(response));
+		return ResponseEntity.ok(response);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ResponseContainer<BookDto>>getBookById(@PathVariable Integer id)
+	public ResponseEntity<BookDto>getBookById(@PathVariable Integer id)
 	{
 		BookDto response = bookService.getBookById(id);
-		return ResponseEntity.ok(new ResponseContainer<>(response));
+		return ResponseEntity.ok(response);
 	}
 	
 	@PostMapping
-	public ResponseEntity<ResponseContainer<Integer>>createBook(@Valid @RequestBody BookDto dto)
+	public ResponseEntity<Integer>createBook(@Valid @RequestBody BookDto dto)
 	{
 		int id = bookService.createBook(dto);
-		return new ResponseEntity<>(new ResponseContainer<>(id),HttpStatus.CREATED);
+		return new ResponseEntity<>(id,HttpStatus.CREATED);
 	}
 	@PutMapping("/{id}")
-	public ResponseEntity<ResponseContainer<BookDto>>updateBook
+	public ResponseEntity<BookDto>updateBook
 	(@PathVariable Integer id, @Valid @RequestBody BookDto dto)
 	{
 		dto.setId(id);
 		BookDto updated = bookService.updateBook(dto);
-		return ResponseEntity.ok(new ResponseContainer<>(updated));
+		return ResponseEntity.ok(updated);
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void>deleteBook(@PathVariable Integer id)

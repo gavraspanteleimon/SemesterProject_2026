@@ -30,33 +30,33 @@ public class AuthorController {
 	}
 
 	@GetMapping
-	public ResponseEntity<ResponseContainer<List<AuthorDto>>>getAuthor()
+	public ResponseEntity<List<AuthorDto>>getAuthor()
 	{
 		List<AuthorDto> response = authorService.getAuthorDto();
-		return ResponseEntity.ok(new ResponseContainer<>(response));
+		return ResponseEntity.ok(response);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ResponseContainer<AuthorDto>> getCityById(@PathVariable Integer id)
+	public ResponseEntity<AuthorDto> getCityById(@PathVariable Integer id)
 	{
 		AuthorDto response = authorService.getAuthorById(id);
-		return ResponseEntity.ok(new ResponseContainer<>(response));
+		return ResponseEntity.ok(response);
 	}
 	
 	@PostMapping
-	public ResponseEntity<ResponseContainer<Integer>>createAuthor(@Valid @RequestBody AuthorDto dto)
+	public ResponseEntity<Integer>createAuthor(@Valid @RequestBody AuthorDto dto)
 	{
 		int id = authorService.createAuthor(dto);
-		return new ResponseEntity<>(new ResponseContainer<>(id),HttpStatus.CREATED);
+		return new ResponseEntity<>(id,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ResponseContainer<AuthorDto>>updateAuthor
+	public ResponseEntity<AuthorDto>updateAuthor
 	(@PathVariable Integer id, @Valid @RequestBody AuthorDto dto ) {
 		
 		dto.setId(id);
 		AuthorDto updated = authorService.updateAuthor(dto);
-		return ResponseEntity.ok(new ResponseContainer<>(updated));
+		return ResponseEntity.ok(updated);
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void>deleteAuthor(@PathVariable Integer id)
