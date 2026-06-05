@@ -37,7 +37,7 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<AuthorDto> getCityById(@PathVariable Integer id)
+	public ResponseEntity<AuthorDto> getAuthorById(@PathVariable Integer id)
 	{
 		AuthorDto response = authorService.getAuthorById(id);
 		return ResponseEntity.ok(response);
